@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "535668150076",
+    "firebase_url": "https://image-upload-test-c6560.firebaseio.com",
+    "project_id": "image-upload-test-c6560",
+    "storage_bucket": "image-upload-test-c6560.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535668150076:android:b45bd295b6791b7f",
+        "android_client_info": {
+          "package_name": "mina.com.imageuploadexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535668150076-spnt4rsa317hsn8m2lkh27feipi3r4d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1KBlF7RWYMQi2xxiX-bi9l0_oT7qo2_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535668150076-spnt4rsa317hsn8m2lkh27feipi3r4d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
