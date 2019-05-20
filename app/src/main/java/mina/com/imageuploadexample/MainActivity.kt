@@ -40,14 +40,13 @@ class MainActivity : AppCompatActivity() {
                     imageView.setImageBitmap(BitmapFactory.decodeFile(it.file.absolutePath))
                     it.file
                 }.observeOn(Schedulers.io())
-                .map {
-                    Compressor(this).compressToFile(it)
-                }
+                .map { Compressor(this).compressToFile(it)}
                 .concatMap { file ->
                     val ref = FirebaseStorage.getInstance()
                         .reference.child("images/${System.currentTimeMillis().toString() + "_" + file.name}")
                     RxFirebaseStorage
                         .putFile(ref, Uri.fromFile(file))
+                        .observeOn(Schedulers.io())
                         .flatMap {
                             Single.create<File> {
                                 ref.downloadUrl.addOnSuccessListener { uri ->
@@ -59,13 +58,15 @@ class MainActivity : AppCompatActivity() {
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally { progress.visibility = View.GONE }
-                .subscribe({
-                    imageView.setImageBitmap(BitmapFactory.decodeFile(it.absolutePath))
-                    Toast.makeText(this, imageUrlRelay.value, Toast.LENGTH_SHORT).show()
-                }, { processError(it) })
+                .subscribe({}, { processError(it) })
             )
 
         }
+
+        disposable.add(imageUrlRelay
+            .hide()
+            .filter { it != "default" }
+            .subscribe { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() })
     }
 
     private fun processError(throwable: Throwable?) {
