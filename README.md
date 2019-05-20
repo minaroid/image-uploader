@@ -1,6 +1,6 @@
 # Image uploader.
 
-This repository contains a detailed sample app that pick, compress and upload an image in one stream using Rx libraries.
+This repository contains a detailed sample app that pick, compress and upload an image to firebase in one stream using Rx libraries.
 
 
 # Screenshots :
